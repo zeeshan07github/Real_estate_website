@@ -1,0 +1,50 @@
+<!-- property_list.html -->
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<h1>Available Properties</h1>
+  <div class="row">
+    <div class="col-md-6">
+      
+    </div>
+    <div class="col-md-6 text-right">
+      <a href="{% url 'myapp:filter' %}" class="btn btn-primary">Use Filters</a>
+      <a class="btn btn-warning" href="{% url 'myapp:addnewproperty' %}">Create Property</a>
+    </div>
+  </div>
+
+  <br>
+  
+  <div class="row">
+    {% for property in properties %}
+      <div class="col-md-6 mb-3">
+        <div class="card">
+          <!-- Display property details as needed -->
+          <div class="card-img-container">
+            <a href="{% url 'myapp:property_detail' property.id %}">
+              
+
+              <img  src="{{ property.image.url }}" width="52%" class="card-img-top" alt="{{ property.title }}">
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{% url 'myapp:property_detail' property.id %}" style="color: #007bff; text-decoration: none;">{{ property.title }}</a>
+            </h5>
+            <!-- Add more property details here -->
+            <p class="card-text" style="color: #333;">Price: ${{ property.price }}</p>
+            <p class="card-text" style="color: #333;">Bedrooms: {{ property.bedrooms }}</p>
+            <!-- You can display more property details as needed -->
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <br>
+  <br>
+  <br>
+{% endblock %}
+
+
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab explicabo necessitatibus eaque quo magni. Esse eos et at optio culpa! Minus voluptatibus, illo tempore ea labore hic delectus assumenda veniam praesentium quibusdam, deleniti esse facere neque dolorum! Unde consequuntur assumenda praesentium reprehenderit saepe qui adipisci dolorum necessitatibus, itaque eos cupiditate temporibus error deserunt magni eaque voluptate repellat quam ea molestias id debitis inventore? Sequi nesciunt voluptates quae voluptas consectetur eligendi alias, obcaecati magni cum quam nulla excepturi veritatis ut esse illo tempora cupiditate distinctio quia neque aliquid corporis recusandae ipsum suscipit. Voluptates dolores asperiores reprehenderit harum dolore a at. Ipsa magnam autem perferendis perspiciatis, enim distinctio iste corrupti? Unde debitis, mollitia maiores inventore iste illum odio impedit! Magnam repudiandae totam itaque quasi in aliquam eligendi maxime harum? Asperiores eveniet tempora at sequi suscipit iusto sed dignissimos libero esse saepe, ea, animi vero. Nesciunt, eos facilis amet hic est et delectus beatae accusamus cumque praesentium consectetur possimus necessitatibus facere maxime vel eligendi repellendus dolores porro quia incidunt recusandae! Qui harum fugiat, sunt sint itaque natus esse ab repellat aliquam, animi voluptate unde voluptas, ipsa beatae error nisi. Dicta, quas quos. Provident, amet voluptate earum a facere pariatur maiores omnis saepe quisquam sit officia quidem necessitatibus labore voluptas. Corrupti vel a aliquid libero expedita reiciendis saepe corporis? Odio, velit. Voluptatum, maiores? Eum ad numquam enim quod cum ipsum dolorum iusto, blanditiis sapiente illum excepturi maxime porro. Illum eligendi est illo autem? Assumenda eaque, exercitationem error esse laborum inventore perspiciatis id beatae fugit temporibus eveniet quidem architecto, accusantium enim repudiandae maxime. Doloremque officia laboriosam, dolor nemo eius minima nulla facilis iusto aspernatur error aperiam voluptatibus aliquam temporibus velit at magni. Totam natus iste dolore adipisci odio tempora aliquam molestiae magnam laboriosam ullam nam eos quam voluptas dignissimos, earum reprehenderit corporis, alias provident maxime nisi explicabo aut. Corporis, non eligendi. Iure maiores quo tempore modi, est atque quod voluptatibus consequuntur numquam, sapiente beatae reprehenderit impedit dolores autem nam sequi explicabo fugiat provident, quibusdam cupiditate? Assumenda id itaque, unde, magni quod voluptate reiciendis totam praesentium quibusdam suscipit natus quae. Esse itaque, similique aperiam sit necessitatibus sunt, tempora optio placeat obcaecati, error repellendus culpa repudiandae qui autem harum voluptas dolore! Fugit provident quaerat aut nisi corrupti quo veritatis dolores vero id recusandae quas eveniet, cupiditate quibusdam dolorum sit a placeat cumque maiores distinctio delectus ex? Earum modi nisi ducimus iste voluptatum aut facilis dolore vero deleniti tempore dolorem illo repudiandae itaque, ex sit natus sequi ab repellendus. Aperiam autem inventore excepturi, deserunt at, adipisci sit nulla magnam itaque quasi fugiat placeat ut est fugit iste eum, nobis corrupti? Perspiciatis explicabo labore aliquid est ratione, aperiam autem quibusdam odit magni laudantium reiciendis repudiandae modi deleniti dolorum, ad voluptates ullam blanditiis fugiat.

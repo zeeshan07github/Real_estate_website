@@ -1,0 +1,30 @@
+{% extends 'social/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to your Dashboard</h1>
+    <p>This is your personalized dashboard where you can access various features and information.</p>
+
+    <!-- Add more content specific to the dashboard view here -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Friend Requests</h5>
+                    <p class="card-text">You have 3 pending friend requests. <a href="{% url 'social:friend_requests' %}">View</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Unread Messages</h5>
+                    <p class="card-text">You have 5 unread messages. <a href="{% url 'social:messaging' %}">View</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

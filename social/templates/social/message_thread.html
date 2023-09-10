@@ -1,0 +1,39 @@
+{% extends 'social/base.html' %}
+
+{% block title %}Message Thread{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Message Thread with {{ user_profile.user.username }}</h1>
+    
+    <!-- List of Messages -->
+    <ul class="list-group mt-4">
+        {% for message in messages_between_users %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>From:</strong> {{ message.sender.username }}
+                    </div>
+                    <div class="col-md-6 text-right">
+                        {{ message.timestamp|date:"F d, Y H:i A" }}
+                    </div>
+                </div>
+                <p>{{ message.content }}</p>
+                <a href="{% url 'social:delete_message' message.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No messages in this thread</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Message Form -->
+    <div class="mt-4">
+        <h3>Send a Message</h3>
+        <form method="post" action="{% url 'social:message_thread' user_profile.user.username %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

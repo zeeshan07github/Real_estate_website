@@ -1,0 +1,37 @@
+{% extends 'social/base.html' %}
+
+{% block title %}Messaging{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mt-4">Messaging</h1>
+    
+    <!-- List of Messages -->
+    <ul class="list-group mt-4">
+        {% for message in latest_messages %}
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>From:</strong> {{ message.sender.username }}
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <small class="text-muted">{{ message.timestamp|date:"F d, Y H:i A" }}</small>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <a href="{% url 'social:message_thread' message.sender.username %}" class="btn btn-info btn-sm">See All Messages</a>
+                    </div>
+
+                    
+                </div>
+                <p>{{ message.content }}</p>
+                <div >
+                    <a href="{% url 'social:delete_message' message.id %}" class="btn btn-danger btn-sm">Delete All</a>
+                </div>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No messages</li>
+        {% endfor %}
+        
+    </ul>
+</div>
+{% endblock %}

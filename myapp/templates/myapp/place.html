@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hOUSE</title>
+</head>
+<body style="text-align : center;">
+
+    
+    <h1>this is my house details</h1>
+    {% if house %}  
+    {% for houses in house  %}
+      
+        <h2>Name of the owner is {{houses.owener_name}} </h2>  
+        <br>
+        <p>Name of the city in which house is {{houses.city }} City</p>  
+        <br>
+        <p>Exact location is {{houses.location}}  </p>
+        <br>
+        <p>Detial about house : {{houses.details}}</p>  
+        <br>
+        <p>Price is : {{houses.price}} </p>
+      
+        {% endfor %}
+    
+    {% endif %}
+    {{house.place.city}}
+</body>
+</html>

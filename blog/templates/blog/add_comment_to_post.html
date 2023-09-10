@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2  style= 'text-align:center;'>Add Comment</h2>
+    <hr>
+    <br>
+    <form method="post"  style= 'text-align:center;'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class = 'btn btn-primary' type="submit">Submit</button>
+    </form>
+{% endblock %}

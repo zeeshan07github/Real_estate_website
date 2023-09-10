@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2 style="background-color: #333 ; color: white;" >Blog Posts</h2>
+    
+    <br>
+    <a href="{% url 'blog:new_post' %}"><button class="btn btn-secondary">New Post</button></a>
+    <br>
+    
+    <br>
+    
+    <ul class="list-group">
+        {% for post in posts %}
+       
+           <li class="list-group-item">
+                <h2><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h2>
+                <h7>
+                    Posted by <b>{{ post.author.username }}</b> Published on <i>{{post.pub_date}}</i>
+                </h7>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

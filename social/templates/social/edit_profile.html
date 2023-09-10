@@ -1,0 +1,14 @@
+{% extends 'social/base.html' %}
+{% block content %}
+
+<h1>Edit Profile</h1>
+
+{% if request.user == user %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class='btn btn-secondary' type="submit">Save Changes</button>
+</form>
+{% endif %}
+{% endblock %}

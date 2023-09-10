@@ -1,0 +1,70 @@
+{% extends 'social/base.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Pending Friend Requests</h2>
+    <ul class="list-group mt-4">
+        {% for request in pending_requests %}
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-8">
+                    <strong>{{ request.sender.username }}</strong> sent you a friend request
+                </div>
+                <div class="col-md-4 text-right">
+                    <form method="post" action="{% url 'social:accept_reject_friend_request' %}">
+                        {% csrf_token %}
+                        <input
+                            type="hidden"
+                            name="friendship_id"
+                            value="{{ request.id }}"
+                        />
+                        <button
+                            type="submit"
+                            name="action"
+                            value="accept"
+                            class="btn btn-success mr-2"
+                        >
+                            Accept
+                        </button>
+                        <button
+                            type="submit"
+                            name="action"
+                            value="reject"
+                            class="btn btn-danger"
+                        >
+                            Reject
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No pending friend requests</li>
+        {% endfor %}
+    </ul>
+
+    <h2 class="mt-4">Send Friend Requests</h2>
+    <ul class="list-group mt-4">
+        {% for user in users_to_send_request %}
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-md-8">
+                    {{ user.username }}
+                </div>
+                <div class="col-md-4 text-right">
+                    {% if user.id not in existing_requests %}
+                    <form method="post" action="{% url 'social:send_friend_request' user.username %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Send Friend Request</button>
+                    </form>
+                    {% else %}
+                    <span class="text-warning">Pending</span>
+                    {% endif %}
+                </div>
+            </div>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No users available to send friend requests.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock  %}

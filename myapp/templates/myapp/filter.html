@@ -1,0 +1,22 @@
+<!-- filter.html -->
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<br>
+  <br>
+  <br>
+  <h1>Filters</h1>
+  <br>
+  <br>
+  <!-- Display the filter form -->
+  <form method="GET" action="{% url 'myapp:property_list' %}">
+    {{ filter_form.as_p }}
+    <button type="submit" class="btn btn-primary">Apply Filters</button>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock %}

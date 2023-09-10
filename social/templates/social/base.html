@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Social Platform{% endblock %}</title>
+
+    <!-- Add Bootstrap CSS link here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Add custom CSS for your project here -->
+    {% comment %} <link rel="stylesheet" href="{% static 'css/custom.css' %}"> {% endcomment %}
+</head>
+<body style="padding-bottom: 90px;">
+<style>
+    /* Add this CSS in your stylesheets or in a separate CSS file */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #343a40; /* Adjust background color as needed */
+    color: #fff; /* Adjust text color as needed */
+    text-align: center;
+    
+    padding: 10px 0; /* Adjust the padding as needed for the desired margin */
+}
+
+</style>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'social:dashboard' %}">Social Platform</a>
+    <a class="navbar-brand" href="/">Real Estate</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'social:dashboard' %}">Dashboard</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'social:friend_requests' %}">Friend Requests</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'social:messaging' %}">Messaging</a>
+            </li>
+            <li class="nav-item">
+                
+            </li>
+            <!-- Add more navigation links as needed -->
+            <li class="nav-item dropdown  ">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'social:user_profile' user.username %}">{{ user_profile.user.username }}</a>
+                    <a class="dropdown-item" href="{% url 'social:edit_profile' user.username %}">Edit Profile</a>
+                    <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+                    <a class="dropdown-item" href="{% url 'password_reset' %}">Password Reset</a>
+                    <a class="dropdown-item" href="{% url 'accounts:logedout' %}">Logout</a>
+                    
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+    
+</nav>
+
+<!-- Main content -->
+<main>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3">
+    &copy; {{ year }} Social Platform. All rights reserved.
+</footer>
+
+<!-- Add Bootstrap JS and jQuery script links here -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
